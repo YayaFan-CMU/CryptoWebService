@@ -1,17 +1,13 @@
-# Dockerfile
+# Use a Linix image with Tomcat 10
+FROM tomcat:10.1.0-M5-jdk16-openjdk-slim-bullseye
 
-# 1. Use an official Tomcat base image
-FROM tomcat:9.0
+# Copy in our ROOT.war to the right place in the container
+COPY ROOT.war /usr/local/tomcat/webapps/
 
-# 2. Set environment variables (Optional)
-ENV JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
-
-# 3. Copy your compiled WAR file to the Tomcat webapps directory
-COPY target/CryptoWebService.war /usr/local/tomcat/webapps/
-
-# 4. Expose the default Tomcat port
+# Expose port 8080
 EXPOSE 8080
 
-# 5. Run Tomcat server
+# Start Tomcat server
 CMD ["catalina.sh", "run"]
+
 
