@@ -1,0 +1,16 @@
+{
+  "name": "CryptoWebService",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    "vscjava.vscode-java-pack"
+  ],
+  "forwardPorts": [8080],
+  "postCreateCommand": "mvn clean install",
+  "remoteUser": "root"
+}
